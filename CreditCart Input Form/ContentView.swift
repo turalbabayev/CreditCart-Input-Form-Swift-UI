@@ -11,50 +11,49 @@ struct ContentView: View {
     @State private var card: CardModel = .init()
     @State private var animateField: ActiveField?
     @FocusState private var activeField: ActiveField?
-    
+    @Namespace private var animation
     var body: some View {
-        
-        ZStack{
-            if animateField == .cvv{
-                RoundedRectangle(cornerRadius: 25)
-                    .fill(.red.mix(with: .blue, by: 0.2))
-                    .overlay {
-                        cardBackView()
-                    }
-                    .frame(height: 200)
-                    .transition(.reverseFlip)
-            } else{
-                MeshGradient(
-                    width: 3,
-                    height: 3,
-                    points: [
-                        .init(0,0), .init(0.5,0),.init(1,0),
-                        .init(0,0.5),.init(0.9,0.6),.init(1,0.5),
-                        .init(0,1),.init(0.5,1),.init(1,1)
-                    ],
-                    colors: [
-                        .red,.red,.pink,
-                        .pink, .orange, .red,
-                        .red,.orange,.red
-                    ]
-                )
-                .clipShape(.rect(cornerRadius: 25))
-                .overlay {
-                    CardFrondView()
-                }
-                .transition(.flip)
-            }
-        }
-        .frame(height: 200)
-        
-        
         VStack(spacing: 15){
-            CustomTextField(value: $card.number , hint: "", title: "Card Number") {
+            ZStack{
+                if animateField == .cvv{
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill(.red.mix(with: .blue, by: 0.2))
+                        .overlay {
+                            cardBackView()
+                        }
+                        .frame(height: 200)
+                        .transition(.reverseFlip)
+                } else{
+                    MeshGradient(
+                        width: 3,
+                        height: 3,
+                        points: [
+                            .init(0,0), .init(0.5,0),.init(1,0),
+                            .init(0,0.5),.init(0.9,0.6),.init(1,0.5),
+                            .init(0,1),.init(0.5,1),.init(1,1)
+                        ],
+                        colors: [
+                            .red,.red,.pink,
+                            .pink, .orange, .red,
+                            .red,.orange,.red
+                        ]
+                    )
+                    .clipShape(.rect(cornerRadius: 25))
+                    .overlay {
+                        CardFrondView()
+                    }
+                    .transition(.flip)
+                }
+            }
+            .frame(height: 200)
+            
+            CustomTextField(value: $card.number , hint: "", title: "Kart Numarası") {
                 card.number = String(card.number.group(" ", count: 4).prefix(19))
             }
+            .keyboardType(.numberPad)
             .focused($activeField,equals: .number)
             
-            CustomTextField(value: $card.name , hint: "", title: "Card Name") {
+            CustomTextField(value: $card.name , hint: "", title: "Kart Sahibinin Adı") {
                 
             }
             .focused($activeField,equals: .name)
@@ -62,13 +61,17 @@ struct ContentView: View {
             
             HStack(spacing: 10){
                 //Limiting Month and year to max length of 2  and cvv 3
-                CustomTextField(value: $card.month , hint: "", title: "Month") {
+                CustomTextField(value: $card.month , hint: "", title: "Ay") {
                     card.month = String(card.month.prefix(2))
+                    if card.month.count == 2{
+                        activeField = .year
+                    }
                 }
                 .focused($activeField,equals: .month)
                 
-                CustomTextField(value: $card.year , hint: "", title: "Year") {
+                CustomTextField(value: $card.year , hint: "", title: "Yıl") {
                     card.year = String(card.year.prefix(2))
+                    
                 }
                 .focused($activeField,equals: .year)
 
@@ -89,6 +92,15 @@ struct ContentView: View {
                 animateField = newValue     
             }
         }
+        
+        .toolbar{
+            ToolbarItem(placement: .keyboard){
+                Button("Tamam"){
+                    activeField = nil
+                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+        }
     }
     
     //Card Frond View
@@ -96,7 +108,7 @@ struct ContentView: View {
     func CardFrondView() -> some View {
         VStack(alignment: .leading, spacing: 15) {
             VStack(alignment: .leading, spacing: 4) {
-                Text("CARD NUMBER")
+                Text("KART NUMARASI")
                     .font(.caption)
                 
                 Text(String(card.rawCardNumber.dummyText("*", count: 16).prefix(16)).group(" ", count: 4))
@@ -104,27 +116,29 @@ struct ContentView: View {
                     
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+            .background(AnimatedRing(animateField == .number))
             .padding(10)
             .frame(maxHeight: .infinity)
             
             HStack(spacing: 10) {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("CARD HOLDER")
+                    Text("KART SAHİBİ")
                         .font(.caption)
                     
-                    Text(card.name.isEmpty ? "YOUR NAME" : card.name)
+                    Text(card.name.isEmpty ? "Ad Soyad" : card.name)
                         .font(.title2)
-                        
+
                 }
+                .background(AnimatedRing(animateField == .name))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(10)
                 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("EXPIRES")
+                    Text("SON KULLANMA TARİHİ")
                         .font(.caption)
                     
                     HStack(spacing: 4){
-                        Text(String(card.month.prefix(2)).dummyText("M", count: 2))
+                        Text(String(card.month.prefix(2)).dummyText("A", count: 2))
                         Text("/")
                         Text(String(card.year.prefix(2)).dummyText("Y", count: 2))
                         
@@ -133,6 +147,8 @@ struct ContentView: View {
                         
                 }
                 .padding(10)
+                .background(AnimatedRing(animateField == .month || animateField == .year))
+
             }
         }
         .foregroundStyle(.white)
@@ -179,6 +195,15 @@ struct ContentView: View {
         .contentTransition(.numericText())
         .animation(.snappy, value: card)
         
+    }
+    @ViewBuilder
+    func AnimatedRing(_ status : Bool) -> some View {
+        if status{
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(.white , lineWidth: 1.5)
+                .matchedGeometryEffect(id: "RING", in: animation)
+                .padding(-10)
+        }
     }
 }
 
