@@ -21,4 +21,15 @@ extension String{
         
         return modifiedString
     }
+    
+    func dummyText(_ character: Character, count: Int) -> String{
+        var tempText = self.replacingOccurrences(of: String(character), with: "")
+        let remaning = min(max(tempText.count - count, 0),count)
+        
+        if remaning > 0 {
+            tempText.append(String(repeating: character, count: remaning))
+        }
+        
+        return tempText
+    }
 }
