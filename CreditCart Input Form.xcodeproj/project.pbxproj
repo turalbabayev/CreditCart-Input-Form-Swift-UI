@@ -59,14 +59,12 @@
 		F63C625B2D0E13B30088B9E4 /* CreditCart Input Form */ = {
 			isa = PBXGroup;
 			children = (
-				F63C625C2D0E13B30088B9E4 /* CreditCart_Input_FormApp.swift */,
-				F63C625E2D0E13B30088B9E4 /* ContentView.swift */,
-				F63C62602D0E13B50088B9E4 /* Assets.xcassets */,
-				F63C62622D0E13B50088B9E4 /* Preview Content */,
-				F63C626A2D0E140D0088B9E4 /* CardModel.swift */,
-				F63C626C2D0E147C0088B9E4 /* CustomComponents.swift */,
-				F63C626E2D0E19270088B9E4 /* Extensions.swift */,
-				F64BEFCF2D0E5D4E00AC5C94 /* FlipTransition.swift */,
+				F6BD9F192D0F75DB008B920C /* Helpers */,
+				F6BD9F172D0F75A8008B920C /* App */,
+				F6BD9F182D0F75BC008B920C /* Resources */,
+				F6BD9F162D0F758F008B920C /* Extension */,
+				F6BD9F142D0F7574008B920C /* Model */,
+				F6BD9F152D0F757E008B920C /* View */,
 			);
 			path = "CreditCart Input Form";
 			sourceTree = "<group>";
@@ -77,6 +75,56 @@
 				F63C62632D0E13B50088B9E4 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F6BD9F142D0F7574008B920C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F63C626A2D0E140D0088B9E4 /* CardModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F6BD9F152D0F757E008B920C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F63C625E2D0E13B30088B9E4 /* ContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F6BD9F162D0F758F008B920C /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F63C626E2D0E19270088B9E4 /* Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		F6BD9F172D0F75A8008B920C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				F63C625C2D0E13B30088B9E4 /* CreditCart_Input_FormApp.swift */,
+				F63C62622D0E13B50088B9E4 /* Preview Content */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		F6BD9F182D0F75BC008B920C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F63C62602D0E13B50088B9E4 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F6BD9F192D0F75DB008B920C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F63C626C2D0E147C0088B9E4 /* CustomComponents.swift */,
+				F64BEFCF2D0E5D4E00AC5C94 /* FlipTransition.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
