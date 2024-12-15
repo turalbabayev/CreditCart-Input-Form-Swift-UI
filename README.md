@@ -34,7 +34,7 @@ Here’s a quick preview of the credit card input form screen:
    ```
 2. Open the project in Xcode:
    ```
-   cd YourRepository
+   cd CreditCartInputForm
    open CreditCartInputForm.xcodeproj
    ```
 3. Run the app on your simulator or connected device.
