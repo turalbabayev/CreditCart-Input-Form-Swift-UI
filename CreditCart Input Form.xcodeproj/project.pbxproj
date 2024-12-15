@@ -14,6 +14,7 @@
 		F63C626B2D0E140D0088B9E4 /* CardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C626A2D0E140D0088B9E4 /* CardModel.swift */; };
 		F63C626D2D0E147C0088B9E4 /* CustomComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C626C2D0E147C0088B9E4 /* CustomComponents.swift */; };
 		F63C626F2D0E19270088B9E4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C626E2D0E19270088B9E4 /* Extensions.swift */; };
+		F64BEFD02D0E5D4E00AC5C94 /* FlipTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64BEFCF2D0E5D4E00AC5C94 /* FlipTransition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		F63C626A2D0E140D0088B9E4 /* CardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardModel.swift; sourceTree = "<group>"; };
 		F63C626C2D0E147C0088B9E4 /* CustomComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomComponents.swift; sourceTree = "<group>"; };
 		F63C626E2D0E19270088B9E4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		F64BEFCF2D0E5D4E00AC5C94 /* FlipTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlipTransition.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				F63C626A2D0E140D0088B9E4 /* CardModel.swift */,
 				F63C626C2D0E147C0088B9E4 /* CustomComponents.swift */,
 				F63C626E2D0E19270088B9E4 /* Extensions.swift */,
+				F64BEFCF2D0E5D4E00AC5C94 /* FlipTransition.swift */,
 			);
 			path = "CreditCart Input Form";
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				F63C626F2D0E19270088B9E4 /* Extensions.swift in Sources */,
 				F63C625F2D0E13B30088B9E4 /* ContentView.swift in Sources */,
 				F63C625D2D0E13B30088B9E4 /* CreditCart_Input_FormApp.swift in Sources */,
+				F64BEFD02D0E5D4E00AC5C94 /* FlipTransition.swift in Sources */,
 				F63C626B2D0E140D0088B9E4 /* CardModel.swift in Sources */,
 				F63C626D2D0E147C0088B9E4 /* CustomComponents.swift in Sources */,
 			);

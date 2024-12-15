@@ -13,4 +13,17 @@ struct CardModel: Hashable{
     var cvv: String = ""
     var month: String = ""
     var year: String = ""
+    var rawCardNumber: String{
+        number.replacingOccurrences(of: " ", with: "")
+    }
+}
+
+//Active TextField
+enum ActiveField{
+    case none
+    case number
+    case name
+    case month
+    case year
+    case cvv
 }
