@@ -8,7 +8,7 @@ This is a simple and clean credit card entry screen developed using SwiftUI. The
 
 - **Simple Design:** A clean and intuitive interface for credit card information entry.
 - **Subtle Animations:** Smooth transitions for a more interactive experience.
-- **SwiftUI Framework:** Fully developed using SwiftUI for modern and responsive design...
+- **SwiftUI Framework:** Fully developed using SwiftUI for modern and responsive design.
 
 ---
 
